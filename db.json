@@ -1,0 +1,11 @@
+{
+  "films": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "director": "typicode",
+      "elenco":["pessoa1","pessoa2"],
+      "ano":"1996"
+    }
+  ]
+}
