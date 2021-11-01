@@ -12,6 +12,7 @@
       <th scope="col">Year</th>
       <th scope="col">Grade</th>
       <th scope="col">Cast</th>
+      <th scope="col">-</th>
     </tr>
   </thead>
   <tbody>
@@ -26,11 +27,13 @@
             <li>{{actor.name}}</li>
         </ul>
       </td>
+      <td> <a href="#" @click="removefilm(film.id)">Remove</a> </td>
     </tr>
   </tbody>
 </table>
 <!-- End Table -->
 <!-- Pagination -->
+<p></p>
 <nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item"><a class="page-link" href="#" @click="previouspage()">Previous</a></li>
@@ -40,29 +43,12 @@
      <li class="page-item" v-if="films[0].meta.last_page >= 4"><a class="page-link" href="#"  @click="showpage(4)">4</a></li>
      <li class="page-item" v-if="films[0].meta.last_page >= 5"><a class="page-link" href="#"  @click="showpage(5)">5</a></li>
     <li class="page-item"><a class="page-link" href="#" @click="nextpage()" >Next</a></li>
+    <li class="page-item"><a class="page-link" href="#">{{films[0].meta.current_page + "/" + films[0].meta.last_page}}</a></li>
   </ul>
 </nav>
 <!-- End Pagination -->
 <!-- Modal -->
-<div v-show="true">
-<div class="modal" tabindex="-1" >
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
+
 <!-- End Modal -->
 
   </div>
@@ -85,6 +71,11 @@ export default {
     })
   },
   methods: {
+    listfilms () {
+      Film.listfilms().then(res => {
+        this.films = res.data.data
+      })
+    },
     nextpage () {
       if (this.films[0].meta.next_page <= this.films[0].meta.last_page) {
         Film.gotopage(this.films[0].meta.next_page).then(res => {
@@ -99,10 +90,12 @@ export default {
         })
       }
     },
-    modalToggle () {
-      const body = document.querySelector('body')
-      this.active = !this.active
-      this.active ? body.classList.add('modal-open') : body.classList.remove('modal-open')
+    removefilm (id) {
+      if (confirm('Do you really want to delete?')) {
+        Film.deletefilm(id).then(res => {
+          this.listfilms()
+        })
+      }
     },
     showpage (n) {
       Film.gotopage(n).then(res => {
