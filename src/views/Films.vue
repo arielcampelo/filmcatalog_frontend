@@ -3,7 +3,11 @@
   <!-- Title -->
   <br><h2>Films</h2>
   <!-- Table -->
-  <p><br><a class="btn btn-primary" href="/" role="button">+ Add new</a></p>
+  <p>
+    <br><a class="btn btn-primary" href="/new" role="button">+ Add new film</a>
+    <a class="btn btn-primary" href="/addcast" role="button" id="addcast">+ Add cast</a>
+  </p>
+  <p><br></p>
   <table class="table">
   <thead>
     <tr>
@@ -119,5 +123,8 @@ export default {
   }
   .myicon:hover{
    background-color:dimgray;
+  }
+  .btn#addcast{
+    margin-left:10px;
   }
 </style>

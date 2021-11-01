@@ -1,7 +1,10 @@
 <template>
 <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/films">Films</router-link>
+    <router-link to="/films">Films</router-link> |
+    <router-link to="/new">New film</router-link> |
+    <router-link to="/addcast">Add cast</router-link>
+
   </div>
 </template>
 

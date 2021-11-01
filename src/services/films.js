@@ -2,7 +2,7 @@ import { http } from './config'
 
 export default {
   listfilms: () => {
-    return http.get('filmswithcast')
+    return http.get('filmswithcast/')
   },
   gotopage: (page) => {
     return http.get('filmswithcast/?page=' + page)
@@ -12,5 +12,8 @@ export default {
   },
   deleteactor: (id) => {
     return http.delete('actor/' + id)
+  },
+  addfilm: (form) => {
+    return http.post('film', form)
   }
 }
