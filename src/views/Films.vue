@@ -1,8 +1,9 @@
 <template>
 <div class='container-fluid'>
   <!-- Title -->
-    <h1>List of all films</h1>
+  <br><h2>Films</h2>
   <!-- Table -->
+  <p><br><a class="btn btn-primary" href="/" role="button">+ Add new</a></p>
   <table class="table">
   <thead>
     <tr>
@@ -12,6 +13,7 @@
       <th scope="col">Year</th>
       <th scope="col">Grade</th>
       <th scope="col">Cast</th>
+      <th scope="col">-</th>
       <th scope="col">-</th>
     </tr>
   </thead>
@@ -24,10 +26,11 @@
       <td>{{film.grade}}</td>
       <td>
         <ul v-for= "actor of film.cast" :key="actor.id" >
-            <li>{{actor.name}}</li>
+            <li>{{actor.name}} <a href="#" @click="removeactor(actor.id)"><img class="myicon" src='images/actor_delete.png'></a></li>
         </ul>
       </td>
-      <td> <a href="#" @click="removefilm(film.id)">Remove</a> </td>
+      <td> <a href="#" ><img class="myicon" src='images/edit.png'></a></td>
+      <td> <a href="#" @click="removefilm(film.id)"><img class="myicon" src='images/remove.png'>  </a> </td>
     </tr>
   </tbody>
 </table>
@@ -47,9 +50,6 @@
   </ul>
 </nav>
 <!-- End Pagination -->
-<!-- Modal -->
-
-<!-- End Modal -->
 
   </div>
 </template>
@@ -58,7 +58,6 @@
 import Film from '../services/films'
 
 export default {
-  name: 'Film',
   data () {
     return {
       films: {}
@@ -91,9 +90,16 @@ export default {
       }
     },
     removefilm (id) {
-      if (confirm('Do you really want to delete?')) {
+      if (confirm('Do you really want to delete the film?')) {
         Film.deletefilm(id).then(res => {
           this.listfilms()
+        })
+      }
+    },
+    removeactor (id) {
+      if (confirm('Do you really want to delete the actor?')) {
+        Film.deleteactor(id).then(res => {
+          this.showpage(this.films[0].meta.current_page)
         })
       }
     },
@@ -105,3 +111,13 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .myicon{
+    width: 16px;
+    height: 16px;
+  }
+  .myicon:hover{
+   background-color:dimgray;
+  }
+</style>

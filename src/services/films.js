@@ -9,5 +9,8 @@ export default {
   },
   deletefilm: (id) => {
     return http.delete('film/' + id)
+  },
+  deleteactor: (id) => {
+    return http.delete('actor/' + id)
   }
 }
