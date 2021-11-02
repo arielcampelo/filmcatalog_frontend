@@ -5,10 +5,9 @@
   <!-- Table -->
   <p>
     <br><a class="btn btn-primary" href="/new" role="button">+ Add new film</a>
-    <a class="btn btn-primary" href="/addcast" role="button" id="addcast">+ Add cast</a>
   </p>
-  <p><br></p>
-  <table class="table">
+  <hr>
+  <table class="table" id="films">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -17,6 +16,7 @@
       <th scope="col">Year</th>
       <th scope="col">Grade</th>
       <th scope="col">Cast</th>
+      <th scope="col">-</th>
       <th scope="col">-</th>
       <th scope="col">-</th>
     </tr>
@@ -30,9 +30,10 @@
       <td>{{film.grade}}</td>
       <td>
         <ul v-for= "actor of film.cast" :key="actor.id" >
-            <li>{{actor.name}} <a href="#" @click="removeactor(actor.id)"><img class="myicon" src='images/actor_delete.png'></a></li>
+            <li>{{actor.name}} </li>
         </ul>
       </td>
+      <td> <a href="#" @click="gotoaddactor(film.id)"><img class="myicon" src='images/actor_add.png'>  </a> </td>
       <td> <a href="#" ><img class="myicon" src='images/edit.png'></a></td>
       <td> <a href="#" @click="removefilm(film.id)"><img class="myicon" src='images/remove.png'>  </a> </td>
     </tr>
@@ -107,6 +108,9 @@ export default {
         })
       }
     },
+    gotoaddactor (id) {
+      this.$router.push({ name: 'Addcast', params: { fid: id } })
+    },
     showpage (n) {
       Film.gotopage(n).then(res => {
         this.films = res.data.data
@@ -126,5 +130,8 @@ export default {
   }
   .btn#addcast{
     margin-left:10px;
+  }
+  .table#films{
+    max-width: 1200px;
   }
 </style>

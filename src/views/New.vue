@@ -66,8 +66,7 @@ export default {
       if (this.check_form() === true) {
         this.showspinner = true
         Film.addfilm(this.form).then(res => {
-          console.log(this.form)
-          this.$router.push('films')
+          this.$router.push({ name: 'Addcast', params: { fid: res.data.data.id } })
         }).catch((error) => {
           this.showalert = true
           this.warning = error
@@ -102,7 +101,7 @@ export default {
       this.showalert = true
     },
     back2films () {
-      this.$router.push('films')
+      this.$router.push('/films')
     }
   }
 }

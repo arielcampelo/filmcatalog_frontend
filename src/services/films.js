@@ -15,5 +15,11 @@ export default {
   },
   addfilm: (form) => {
     return http.post('film', form)
+  },
+  addactor: (form) => {
+    return http.post('actor', form)
+  },
+  getactorsbyfilm: (id) => {
+    return http.get('filmactors/' + id)
   }
 }

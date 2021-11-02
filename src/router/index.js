@@ -21,9 +21,10 @@ const routes = [
     component: New
   },
   {
-    path: '/addcast',
+    path: '/addcast/:fid',
     name: 'Addcast',
-    component: Addcast
+    component: Addcast,
+    props: false
   },
   {
     path: '/about',
