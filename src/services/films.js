@@ -21,5 +21,11 @@ export default {
   },
   getactorsbyfilm: (id) => {
     return http.get('filmactors/' + id)
+  },
+  getfilm: (id) => {
+    return http.get('film/' + id)
+  },
+  updatefilm: (id, form) => {
+    return http.put('film/' + id, form)
   }
 }

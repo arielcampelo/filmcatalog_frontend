@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Films from '../views/Films.vue'
 import New from '../views/New.vue'
 import Addcast from '../views/Addcast.vue'
+import Edit from '../views/Edit.vue'
 
 const routes = [
   {
@@ -21,10 +22,15 @@ const routes = [
     component: New
   },
   {
+    path: '/edit',
+    name: 'Edit',
+    component: Edit
+  },
+  {
     path: '/addcast/:fid',
     name: 'Addcast',
     component: Addcast,
-    props: false
+    props: true
   },
   {
     path: '/about',

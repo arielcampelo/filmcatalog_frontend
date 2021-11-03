@@ -34,7 +34,7 @@
         </ul>
       </td>
       <td> <a href="#" @click="gotoaddactor(film.id)"><img class="myicon" src='images/actor_add.png'>  </a> </td>
-      <td> <a href="#" ><img class="myicon" src='images/edit.png'></a></td>
+      <td> <a href="#"  @click="gotoedit(film.id)"><img class="myicon" src='images/edit.png'></a></td>
       <td> <a href="#" @click="removefilm(film.id)"><img class="myicon" src='images/remove.png'>  </a> </td>
     </tr>
   </tbody>
@@ -110,6 +110,9 @@ export default {
     },
     gotoaddactor (id) {
       this.$router.push({ name: 'Addcast', params: { fid: id } })
+    },
+    gotoedit (id) {
+      this.$router.push({ name: 'Edit', params: { fid: id } })
     },
     showpage (n) {
       Film.gotopage(n).then(res => {
