@@ -4,6 +4,9 @@ import Films from '../views/Films.vue'
 import New from '../views/New.vue'
 import Addcast from '../views/Addcast.vue'
 import Edit from '../views/Edit.vue'
+import Login from '../views/Login.vue'
+import Logout from '../views/Logout.vue'
+import Guard from '../services/middleware'
 
 const routes = [
   {
@@ -12,9 +15,20 @@ const routes = [
     component: Home
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/logout',
+    name: 'Logout',
+    component: Logout
+  },
+  {
     path: '/films',
     name: 'Films',
-    component: Films
+    component: Films,
+    beforeEnter: Guard.auth
   },
   {
     path: '/new',

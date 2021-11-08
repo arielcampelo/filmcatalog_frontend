@@ -1,6 +1,12 @@
 import { http } from './config'
 
 export default {
+  login: (form) => {
+    return http.post('login/', form)
+  },
+  logout: () => {
+    return http.post('logout/')
+  },
   listfilms: () => {
     return http.get('filmswithcast/')
   },
