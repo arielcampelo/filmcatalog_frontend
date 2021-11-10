@@ -7,6 +7,9 @@ export default {
   logout: () => {
     return http.post('logout/')
   },
+  get_user: () => {
+    return http.get('user/')
+  },
   listfilms: () => {
     return http.get('filmswithcast/')
   },

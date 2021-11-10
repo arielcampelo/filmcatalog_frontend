@@ -34,7 +34,7 @@
         </ul>
       </td>
       <td> <a href="#" @click="gotoaddactor(film.id)"><img class="myicon" src='images/actor_add.png'>  </a> </td>
-      <td> <a href="#"  @click="gotoedit(film.id)"><img class="myicon" src='images/edit.png'></a></td>
+      <td> <a href="#" @click="gotoedit(film.id)"><img class="myicon" src='images/edit.png'></a></td>
       <td> <a href="#" @click="removefilm(film.id)"><img class="myicon" src='images/remove.png'>  </a> </td>
     </tr>
   </tbody>
@@ -51,11 +51,10 @@
      <li class="page-item" v-if="films[0].meta.last_page >= 4"><a class="page-link" href="#"  @click="showpage(4)">4</a></li>
      <li class="page-item" v-if="films[0].meta.last_page >= 5"><a class="page-link" href="#"  @click="showpage(5)">5</a></li>
     <li class="page-item"><a class="page-link" href="#" @click="nextpage()" >Next</a></li>
-    <li class="page-item"><a class="page-link" href="#">{{films[0].meta.current_page + "/" + films[0].meta.last_page}}</a></li>
+    <!-- <li class="page-item"><a class="page-link" href="#">{{films[0].meta.current_page + "/" + films[0].meta.last_page}}</a></li> -->
   </ul>
 </nav>
 <!-- End Pagination -->
-
   </div>
 </template>
 
@@ -63,16 +62,16 @@
 import Film from '../services/films'
 
 export default {
+  name: 'Films',
   data () {
     return {
-      films: {}
+      films: {},
+      var_mdl_param: 0,
+      var_mdl_func: 1
     }
   },
   created () {
-    Film.listfilms().then(res => {
-      this.films = res.data.data
-      console.log(res.data.data)
-    })
+    this.listfilms()
   },
   methods: {
     listfilms () {

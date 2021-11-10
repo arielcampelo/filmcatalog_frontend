@@ -44,7 +44,7 @@
 import Film from '../services/films'
 
 export default {
-
+  name: 'Addcast',
   props: {
     fid: { Number }
   },

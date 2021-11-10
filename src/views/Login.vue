@@ -28,9 +28,9 @@
 
 <script>
 import Film from '../services/films'
-import Cookie from 'js-cookie'
 
 export default {
+  name: 'Login',
   data () {
     return {
       films: {},
@@ -45,18 +45,16 @@ export default {
     }
   },
   created () {
-    // Cookie.remove('jwt')
+
   },
   methods: {
     send_form () {
       if (this.check_form() === true) {
         this.showspinner = true
         Film.login(this.form).then(res => {
-          Cookie.set('jwt', res.data.token)
+          localStorage.setItem('token', res.data.token)
           this.$router.push('/films')
-          this.showalert = true
-          this.warning = res.data.message + '- Token: ' + res.data.token
-          // console.log(res)
+          console.log(res)
         }).catch((error) => {
           this.showalert = true
           this.warning = error

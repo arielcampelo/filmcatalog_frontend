@@ -12,7 +12,8 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    beforeEnter: Guard.auth
   },
   {
     path: '/login',
@@ -22,7 +23,8 @@ const routes = [
   {
     path: '/logout',
     name: 'Logout',
-    component: Logout
+    component: Logout,
+    beforeEnter: Guard.auth
   },
   {
     path: '/films',
@@ -33,27 +35,23 @@ const routes = [
   {
     path: '/new',
     name: 'New',
-    component: New
+    component: New,
+    beforeEnter: Guard.auth
   },
   {
     path: '/edit',
     name: 'Edit',
-    component: Edit
+    component: Edit,
+    beforeEnter: Guard.auth
   },
   {
     path: '/addcast/:fid',
     name: 'Addcast',
     component: Addcast,
+    beforeEnter: Guard.auth,
     props: true
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   }
+
 ]
 
 const router = createRouter({

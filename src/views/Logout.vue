@@ -13,9 +13,9 @@
 
 <script>
 import Film from '../services/films'
-import Cookie from 'js-cookie'
 
 export default {
+  name: 'Logout',
   data () {
     return {
       message: '',
@@ -24,15 +24,14 @@ export default {
     }
   },
   created () {
-    Cookie.remove('jwt')
+    localStorage.clear()
     this.send_logout()
   },
   methods: {
     send_logout () {
       Film.logout().then(res => {
         this.message = res.data.message
-        // Cookie.remove('_myapp_token')
-        this.$router.push('/')
+        this.$router.push('/login')
         // console.log(res)
       }).catch((error) => {
         this.showalert = true

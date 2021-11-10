@@ -38,6 +38,7 @@
 import Film from '../services/films'
 
 export default {
+  name: 'New',
   data () {
     return {
       films: {},

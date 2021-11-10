@@ -1,8 +1,8 @@
-import Cookie from 'js-cookie'
+// import Cookie from 'js-cookie'
 
 export default {
   auth (to, from, next) {
-    const token = Cookie.get('jwt')
+    const token = localStorage.getItem('token')
     // Falta verificar a validade do token
     // Não é recomendado deixar desse jeito
     if (!token) {

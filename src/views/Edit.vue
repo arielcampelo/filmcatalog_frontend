@@ -43,6 +43,7 @@ import Film from '../services/films'
 import EditCast from '../components/EditCast.vue'
 
 export default {
+  name: 'Edit',
   components: {
     EditCast
   },

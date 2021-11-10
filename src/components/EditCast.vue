@@ -31,6 +31,7 @@
         </tbody>
       </table>
       <!-- End Table -->
+
 </template>
 
 <script>
@@ -43,6 +44,7 @@ export default {
   },
   data () {
     return {
+      showModal: true,
       title: '',
       actors: {},
       form: {
