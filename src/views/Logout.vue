@@ -2,7 +2,6 @@
 <div class='container-fluid'>
     <div class="row">
       <div class="col-sm-10 offset-sm-1">
-        <h1>Logout</h1>
           <p>{{this.message}}</p>
           <br>
           <div class="alert alert-warning" role="alert" id="warning" v-show="showalert">{{warning}}</div>

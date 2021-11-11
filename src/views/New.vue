@@ -1,37 +1,33 @@
 <template>
-  <div class='container-fluid'>
-
-  <div class="row">
-    <div class="col-sm-10 offset-sm-1">
-      <!-- Title -->
-      <br><h2>New</h2>
-      <!-- Form -->
-      <form action='#' method='pos' @submit.prevent="send_form()">
-        <label for="title" class="form-label">Title</label>
-        <input type="text" v-model="form.title" class="form-control" id="title">
-
-        <label for="author" class="form-label">Author</label>
-        <input type="text" v-model="form.author" class="form-control" id="author">
-
-        <label for="year" class="form-label">Year</label>
-        <select class="form-select" id="year" v-model="form.year">
-          <option v-for="i in 52" :key="2022-i" :selected="selected" >{{2022-i}}</option>
-        </select>
-
-        <label for="grade" class="form-label">Grade</label>
-        <input type="text" v-model="form.grade" class="form-control" id="grade">
-
-      <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-      <button type="button" class="btn btn-primary" id="reset" @click="clear_form()">Reset</button>
-      <button type="button" class="btn btn-primary" id="cancel" @click="back2films()">Cancel</button>
-      <br>
-      <div class="alert alert-warning" role="alert" id="warning" v-show="showalert">{{warning}}</div>
-      <div class="spinner-border text-primary" role="status" id="spin" v-show="showspinner" ></div>
-    </form>
-  </div>
+<div class='container-fluid'>
+    <div class="row">
+        <div class="col-sm-10 offset-sm-1">
+            <!-- Title -->
+            <br>
+            <h2>New</h2>
+            <!-- Form -->
+            <form action='#' method='pos' @submit.prevent="send_form()">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" v-model="form.title" class="form-control" id="title">
+                <label for="author" class="form-label">Author</label>
+                <input type="text" v-model="form.author" class="form-control" id="author">
+                <label for="year" class="form-label">Year</label>
+                <select class="form-select" id="year" v-model="form.year">
+                    <option v-for="i in 52" :key="2022-i" :selected="selected" >{{2022-i}}</option>
+                </select>
+                <label for="grade" class="form-label">Grade</label>
+                <input type="text" v-model="form.grade" class="form-control" id="grade">
+                <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                <button type="button" class="btn btn-primary" id="reset" @click="clear_form()">Reset</button>
+                <button type="button" class="btn btn-primary" id="cancel" @click="back2films()">Cancel</button>
+                <br>
+                <div class="alert alert-warning" role="alert" id="warning" v-show="showalert">{{warning}}</div>
+                <div class="spinner-border text-primary" role="status" id="spin" v-show="showspinner" ></div>
+            </form>
+        </div>
+    </div>
+    <!-- End Form -->
 </div>
-  <!-- End Form -->
-  </div>
 </template>
 
 <script>

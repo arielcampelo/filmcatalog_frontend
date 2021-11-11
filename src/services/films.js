@@ -1,40 +1,43 @@
 import { http } from './config'
 
 export default {
-  login: (form) => {
+  login: async (form) => {
     return http.post('login/', form)
   },
-  logout: () => {
+  logout: async () => {
     return http.post('logout/')
   },
-  get_user: () => {
+  get_user: async () => {
     return http.get('user/')
   },
-  listfilms: () => {
+  add_user: async (form) => {
+    return http.post('register', form)
+  },
+  listfilms: async () => {
     return http.get('filmswithcast/')
   },
-  gotopage: (page) => {
+  gotopage: async (page) => {
     return http.get('filmswithcast/?page=' + page)
   },
-  deletefilm: (id) => {
+  deletefilm: async (id) => {
     return http.delete('film/' + id)
   },
-  deleteactor: (id) => {
+  deleteactor: async (id) => {
     return http.delete('actor/' + id)
   },
-  addfilm: (form) => {
+  addfilm: async (form) => {
     return http.post('film', form)
   },
-  addactor: (form) => {
+  addactor: async (form) => {
     return http.post('actor', form)
   },
-  getactorsbyfilm: (id) => {
+  getactorsbyfilm: async (id) => {
     return http.get('filmactors/' + id)
   },
-  getfilm: (id) => {
+  getfilm: async (id) => {
     return http.get('film/' + id)
   },
-  updatefilm: (id, form) => {
+  updatefilm: async (id, form) => {
     return http.put('film/' + id, form)
   }
 }

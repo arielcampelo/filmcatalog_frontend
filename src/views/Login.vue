@@ -1,29 +1,56 @@
 <template>
-  <div class='container-fluid'>
-    <div class="row">
-      <div class="col-sm-10 offset-sm-1">
-        <!-- Title -->
-        <br><h2>Login</h2>
-        <!-- Form -->
-        <form action='#' method='pos' @submit.prevent="send_form()">
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label" >Email address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" style="max-width:350px;" v-model="form.email">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" style="max-width:350px;" v-model="form.password">
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-          <button type="button" class="btn btn-primary" id="clear" @click="clear_form()">Clear</button>
-        </form>
-        <!-- End Form -->
-        <div class="alert alert-warning" role="alert" id="warning" v-show="showalert">{{warning}}</div>
-        <div class="spinner-border text-primary" role="status" id="spin" v-show="showspinner" ></div>
-
-      </div>
+<div class="container">
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center" >
+                                    <h1 class="h4 text-gray-900 mb-4" id="welcome">Login</h1>
+                                </div>
+                                <form class="user" action='#' method='pos' @submit.prevent="send_form()">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control form-control-user"
+                                            id="email" aria-describedby="emailHelp"
+                                            placeholder="Type your e-mail addresss" v-model="form.email" >
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="password" placeholder="Password" v-model="form.password">
+                                    </div>
+                                        <div class="form-group">
+                                        <div class="custom-control custom-checkbox small">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck">
+                                            <label class="custom-control-label" for="customCheck">Remember</label>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn btn-primary btn-user btn-block" id = "loginButton" @click="send_form()">
+                                    Login
+                                    </a>
+                                </form>
+                                <div class="alert alert-warning" role="alert" id="warning" v-show="showalert">{{warning}}</div>
+                                <hr>
+                                <div align="center">
+                                  <div class="spinner-border text-primary"  role="status" id="spin" v-show="showspinner" ></div>
+                                </div>
+                                <div class="text-center">
+                                    <a class="small" href="#" @click="this.$router.push('/register')">Sign up</a>
+                                </div>
+                                <!-- Use this div only if Login with Google And Facebook are disabled  -->
+                                <div style="margin-top:100px;"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
 </template>
 
 <script>
@@ -89,11 +116,12 @@ export default {
 }
 </script>
 <style scoped>
-.btn#clear{
-    margin-left:10px;
-  }
-  .alert#warning{
-    margin-top:20px;
-    max-width: 500px;
-  }
+@import url('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i');
+@import '../assets/login/css/sb-admin-2.min.css';
+@import '../assets/login/css/custom.css';
+@import '../assets/login/vendor/fontawesome-free/css/all.min.css';
+.alert#warning{
+  margin-top:20px;
+  max-width: 500px;
+}
 </style>

@@ -1,37 +1,36 @@
 <template>
-      <!-- Title -->
-      <h2>Edit cast</h2>
-      <!--Form -->
-      <form action='#' method='pos' @submit.prevent="send_form()">
-         <label for="title" class="form-label">Name</label>
-        <input type="text" v-model="form.name" class="form-control" id="name">
-        <button type="submit" class="btn btn-primary" id="submit">Add</button>
-        <button type="button" class="btn btn-primary" id="cancel" @click="clear_form()">Reset</button>
-      </form>
-        <br>
-      <div class="alert alert-warning" role="alert" id="warning" v-show="showalert">{{warning}}</div>
-      <div class="spinner-border text-primary" role="status" id="spin" v-show="showspinner" ></div>
-      <!--End Form -->
-      <hr>
-      <!-- Table -->
-       <table class="table" id="actors">
-        <thead>
-          <tr>
+<!-- Title -->
+<h2>Edit cast</h2>
+<!--Form -->
+<form action='#' method='pos' @submit.prevent="send_form()">
+    <label for="title" class="form-label">Name</label>
+    <input type="text" v-model="form.name" class="form-control" id="name">
+    <button type="submit" class="btn btn-primary" id="submit">Add</button>
+    <button type="button" class="btn btn-primary" id="cancel" @click="clear_form()">Reset</button>
+</form>
+<br>
+<div class="alert alert-warning" role="alert" id="warning" v-show="showalert">{{warning}}</div>
+<div class="spinner-border text-primary" role="status" id="spin" v-show="showspinner" ></div>
+<!--End Form -->
+<hr>
+<!-- Table -->
+<table class="table" id="actors">
+    <thead>
+        <tr>
             <th scope="col">#</th>
             <th scope="col">Actor</th>
             <th scope="col">-</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for ="actor of actors" :key="actor.id">
+        </tr>
+    </thead>
+    <tbody>
+        <tr v-for ="actor of actors" :key="actor.id">
             <th scope="row">{{actor.id}}</th>
             <td>{{actor.name}}</td>
             <td> <a href="#" @click="removeactor(actor.id)"><img class="myicon" src='/images/remove.png'>  </a> </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- End Table -->
-
+        </tr>
+    </tbody>
+</table>
+<!-- End Table -->
 </template>
 
 <script>

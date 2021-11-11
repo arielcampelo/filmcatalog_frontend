@@ -5,6 +5,7 @@ import New from '../views/New.vue'
 import Addcast from '../views/Addcast.vue'
 import Edit from '../views/Edit.vue'
 import Login from '../views/Login.vue'
+import Register from '../views/Register.vue'
 import Logout from '../views/Logout.vue'
 import Guard from '../services/middleware'
 
@@ -19,6 +20,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
   },
   {
     path: '/logout',
